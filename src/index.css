@@ -1,79 +1,79 @@
 /* Load all SF Pro Display variants */
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYULTRALIGHTITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYULTRALIGHTITALIC.OTF") format("opentype");
   font-weight: 200; /* Ultralight */
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYTHINITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYTHINITALIC.OTF") format("opentype");
   font-weight: 250; /* Thin (approximate; SF Pro uses custom axes) */
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYLIGHTITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYLIGHTITALIC.OTF") format("opentype");
   font-weight: 300; /* Light */
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
   font-weight: 400; /* Regular */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYMEDIUM.OTF") format("opentype");
   font-weight: 500; /* Medium */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYSEMIBOLD.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYSEMIBOLD.OTF") format("opentype");
   font-weight: 600; /* Semibold */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("opentype");
   font-weight: 600; /* Semibold */
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYBOLD.OTF") format("opentype");
   font-weight: 700; /* Bold */
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYHEAVYITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYHEAVYITALIC.OTF") format("opentype");
   font-weight: 850; /* Heavy (approximate) */
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/SFPRODISPLAYBLACKITALIC.OTF') format('opentype');
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYBLACKITALIC.OTF") format("opentype");
   font-weight: 900; /* Black */
   font-style: italic;
   font-display: swap;
@@ -84,7 +84,11 @@
 @theme {
   /* colors */
   --color-primary-black: #101010;
+  --color-secondary-black:#1C1C1C;
   --color-primary-gray: rgba(255, 255, 255, 0.5);
+  --color-secondary-gray: rgba(255, 255, 255, 0.1);
+  --color-secondary-white: rgba(255, 255, 255, 0.9);
+  --color-off-gray:rgba(255, 255, 255, 0.75);
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
@@ -92,7 +96,8 @@
   /* fonts */
   --font-poppins: "Poppins", sans-serif;
   --font-open-sans: "Open Sans", sans-serif;
-  --font-sf-pro: "SF Pro Display", -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui, sans-serif;
+  --font-sf-pro: "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    ui-sans-serif, system-ui, sans-serif;
 
   /* Breakpoints */
   /* customize your breakpoints if needed */
@@ -120,6 +125,14 @@ html {
 
 @layer {
   body {
-    @apply bg-primary-black;
+    @apply bg-primary-black font-sf-pro;
+  }
+
+  .primary-heading {
+    @apply text-base font-normal text-primary-gray leading-[150%];
+  }
+
+  .primary-btn {
+    @apply h-auto w-auto py-4 px-6 rounded-[100px] bg-white text-base font-[590] text-primary-black cursor-pointer border-1 border-transparent hover:border-solid hover:border-white hover:text-white hover:bg-transparent ease-in-out duration-500;
   }
 }
