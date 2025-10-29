@@ -38,7 +38,7 @@ const Hero = () => {
       trigger: ".hero-section",
       start: "top top",
       end: "+=300%",
-      scrub: 2,
+      scrub: 1,
       onUpdate: self => {
         const scrollProgress = self.progress;
         const frameIndex = Math.floor(scrollProgress * frame.maxIndex);
