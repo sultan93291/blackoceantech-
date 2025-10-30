@@ -4,12 +4,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const MinningFeatures = [
+  "Data Centers & Cloud Providers",
+  "AI/ML Compute Clusters",
+  "Enterprise Backup & Recovery Systems",
+];
+
 const Hero = () => {
   const [allImages, setAllImages] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
 
   const frame = {
-    maxIndex: 255, 
+    maxIndex: 255,
   };
 
   // Preload images
@@ -31,12 +37,11 @@ const Hero = () => {
     const images = preloadImages();
     setAllImages(images);
 
-    // GSAP timeline with ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".hero-section",
         start: "top top",
-        end: "+=400%", // longer scroll area for smooth playback
+        end: "+=400%",
         scrub: 1,
         pin: true,
         onUpdate: self => {
@@ -59,7 +64,6 @@ const Hero = () => {
     };
   }, []);
 
-  // Ensure last frame stays visible if we reach end
   const displayFrame =
     currentFrame >= frame.maxIndex ? frame.maxIndex - 1 : currentFrame;
 
@@ -74,22 +78,30 @@ const Hero = () => {
           />
         )}
 
-        {/* Content Overlay */}
         <div className="absolute inset-0 flex justify-center items-center w-full h-screen z-10">
           <div className="container flex flex-row items-center w-full justify-between">
-            <div className="flex flex-col gap-y-[223px] items-start">
-              <p className="text-2xl font-normal leading-[150%] text-off-gray max-w-[449px]">
-                From scalable rackmount storage systems to ultra fast NVMe
-                cooling we deliver the technology that drives modern data
-                centers.
-              </p>
-              
-              <button className="primary-btn">Get a Free Consultation</button>
+            <div className="flex flex-col gap-y-[252px ">
+              <div className="flex flex-col gap-y-[223px] items-start">
+                <p className="text-2xl font-normal leading-[150%] text-off-gray max-w-[449px]">
+                  From scalable rackmount storage systems to ultra fast NVMe
+                  cooling we deliver the technology that drives modern data
+                  centers.
+                </p>
+
+                <button className="primary-btn">Get a Free Consultation</button>
+              </div>
             </div>
             <h2 className="text-[56px] font-[590] text-white leading-[120%] max-w-[492px]">
               Empower Your Data Infrastructure with Enterprise Grade
               Performance.
             </h2>
+          </div>
+          <div className="absolute bottom-0 left-0 h-auto w-full mb-8 ">
+            <div className="container flex flex-row justify-between ">
+              {MinningFeatures.map((minning, idx) => {
+                return <p className="primary-heading"> {minning} </p>;
+              })}
+            </div>
           </div>
         </div>
       </div>

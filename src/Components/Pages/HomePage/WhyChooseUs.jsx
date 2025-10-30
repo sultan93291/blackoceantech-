@@ -10,13 +10,13 @@ const FeaturesArr = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-choose-us" className="pt-[150px] h-auto w-full  ">
+    <section id="why-choose-us" className="pt-28 xl:pt-[150px] h-auto w-full  ">
       <div className="container flex flex-col gap-y-[50px] ">
         <div
           className="
-        flex flex-row w-full justify-between items-center"
+        flex flex-col lg:flex-row w-full justify-between gap-y-10 lg:items-center"
         >
-          <h2 className="text-[136px] font-[590] text-primary-gray leading-[120%] ">
+          <h2 className=" text-[56px] sm:text-[64px] xl:text-[80px] 2xl:text-[100px] 3xl:text-[136px] font-[590] text-primary-gray leading-[120%] ">
             Why <br /> <span className="text-white">Choose</span> Us.
           </h2>
           <p className="primary-heading max-w-[344px]! ">
@@ -24,12 +24,12 @@ const WhyChooseUs = () => {
             computing, and advanced cooling solutions,
           </p>
         </div>
-        <div className="h-auto w-full rounded-[48px] p-12 bg-secondary-black">
-          <div className="flex flex-wrap justify-between gap-y-12 relative">
+        <div className="h-auto w-full rounded-4xl xl:rounded-[48px] p-6 xl:p-12 bg-secondary-black">
+          <div className="flex flex-wrap justify-between gap-6 xl:gap-x-8 xl:gap-y-12 relative">
             {FeaturesArr.map((feature, idx) => (
               <div
                 key={idx}
-                className="py-8 px-12 rounded-[100px] bg-secondary-gray text-secondary-white text-center text-[36px] font-[590]"
+                className="2xl:py-8 xl:px-6 xl:py-6 px-4 py-4 2xl:px-12 rounded-[100px] bg-secondary-gray text-secondary-white text-center text-base sm:text-xl xl:text-[26px] 2xl:text-[36px] font-[590]"
               >
                 {feature}
               </div>

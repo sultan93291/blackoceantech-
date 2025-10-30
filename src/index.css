@@ -84,11 +84,12 @@
 @theme {
   /* colors */
   --color-primary-black: #101010;
-  --color-secondary-black:#1C1C1C;
+  --color-secondary-black: #1c1c1c;
   --color-primary-gray: rgba(255, 255, 255, 0.5);
   --color-secondary-gray: rgba(255, 255, 255, 0.1);
   --color-secondary-white: rgba(255, 255, 255, 0.9);
-  --color-off-gray:rgba(255, 255, 255, 0.75);
+  --color-off-gray: rgba(255, 255, 255, 0.75);
+  --color-secondary-off-gray:#888888;
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
@@ -107,6 +108,7 @@
   --breakpoint-lg: 768px;
   --breakpoint-xl: 1024px;
   --breakpoint-2xl: 1280px;
+  --breakpoint-3xl: 1440px;
 
   --container-max-width: 1440px;
   --container-padding-x: 1rem;
@@ -137,8 +139,8 @@ html {
   }
 
   .glass-effect {
-    background: rgba(45, 29, 77, 0.26);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(rgba(28, 28, 28, 1));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(6px);
   }
 }

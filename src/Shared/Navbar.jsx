@@ -116,14 +116,15 @@ const Navbar = () => {
             {navLink.map((nav, idx) => (
               <li
                 key={idx}
-                className={`hover:text-white cursor-pointer ease-in-out duration-500 text-base font-normal ${
-                  active === nav.label ? "text-white" : "text-primary-gray"
-                }`}
+                className={` text-white cursor-pointer ease-in-out duration-500 text-base font-normal `}
               >
                 <Link
                   to={nav.redirectLink}
                   duration={500}
-                  onClick={() => setActive(nav.redirectLink)}
+                  onClick={() => {
+                    setActive(nav.redirectLink);
+                    setIsOpen(false);
+                  }}
                 >
                   {nav.label}
                 </Link>

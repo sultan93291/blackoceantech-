@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="h-auto w-full relative ">
       <div className="container flex flex-col">
-        <div className="xl:ml-[400px] flex flex-col gap-y-4 xl:flex-row justify-between mb-10    ">
+        <div className=" xl:ml-80 2xl:ml-[400px] flex flex-col gap-y-4 xl:flex-row justify-between mb-10    ">
           <p className=" font-sf-pro text-primary-gray ">
             All Copywrite Reserved By
           </p>
