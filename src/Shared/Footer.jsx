@@ -20,16 +20,16 @@ const Footer = () => {
   return (
     <footer className="h-auto w-full relative ">
       <div className="container flex flex-col">
-        <div className="ml-[400px] flex flex-row justify-between   ">
+        <div className="xl:ml-[400px] flex flex-col gap-y-4 xl:flex-row justify-between mb-10    ">
           <p className=" font-sf-pro text-primary-gray ">
             All Copywrite Reserved By
           </p>
-          <ul className="flex flex-row gap-x-12 items-center ">
+          <ul className="flex flex-row justify-between sm:justify-normal sm:gap-x-6 lg:gap-x-12 items-center ">
             {footerLink.map((footer, idx) => {
               return (
                 <li
                   key={idx}
-                  className=" hover:text-white cursor-pointer ease-in-out duration-500  text-base font-normal text-primary-gray"
+                  className=" hover:text-white cursor-pointer ease-in-out duration-500  text-sm xs:text-base font-normal text-primary-gray"
                 >
                   {" "}
                   {footer.label}{" "}

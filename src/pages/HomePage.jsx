@@ -7,10 +7,10 @@ import Hero from "../Components/Pages/HomePage/Hero";
 const HomePage = () => {
   return (
     <>
-      <Hero/>
+      {/* <Hero/>
       <Features/>
       <WhyChooseUs />
-      <GetInTouch />
+      <GetInTouch /> */}
     </>
   );
 };
