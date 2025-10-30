@@ -1,30 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
 import logo from "../assets/img/logo-header.png";
 
 const navLink = [
-  {
-    label: "About Us",
-    redirectLink: "about-us",
-  },
-  {
-    label: "Products",
-    redirectLink: "products",
-  },
-  {
-    label: "Why Choose Us",
-    redirectLink: "why-choose-us",
-  },
-  {
-    label: "Contact Us",
-    redirectLink: "contact-us",
-  },
+  { label: "Hero", redirectLink: "hero" },
+  { label: "About Us", redirectLink: "about-us" },
+  { label: "Products", redirectLink: "products" },
+  { label: "Why Choose Us", redirectLink: "why-choose-us" },
+  { label: "Contact Us", redirectLink: "contact-us" },
 ];
 
 const Navbar = () => {
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(navLink[0].label);
   const sidebarRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // Track scroll position
 
   useEffect(() => {
     const handleClickOutside = event => {
@@ -46,8 +38,53 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  useEffect(() => {
+    // Scroll event listener to track scroll position
+    const handleScroll = () => {
+      if (window.scrollY > 115) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(SplitText);
+
+    const splitTextAnimation = () => {
+      gsap.set(".split", { opacity: 1 });
+
+      const split = new SplitText(".split", {
+        type: "words",
+        wordsClass: "word++",
+        wordDelimiter: String.fromCharCode(8205),
+      });
+
+      gsap.from(split.words, {
+        y: -100,
+        opacity: 0,
+        rotation: "random(-20, 20)",
+        stagger: 0.1,
+        duration: 1.5,
+        ease: "back",
+      });
+    };
+
+    document.fonts.ready.then(() => {
+      splitTextAnimation();
+    });
+  }, []);
+
   return (
-    <nav className="h-auto w-full py-4 3xl:py-8 fixed top-0 left-0 z-20">
+    <nav
+      className={`h-auto w-full py-4 3xl:pt-8 ${
+        scrolled ? "glass-effect" : ""
+      } fixed top-0 left-0 z-20`}
+    >
       <div className="h-auto w-full container flex flex-row justify-between items-center">
         <img
           src={logo}
@@ -55,18 +92,19 @@ const Navbar = () => {
           className="max-w-[264px] max-h-[50px] h-full w-full object-cover"
         />
         {/* navbar desktop */}
-        <ul className=" hidden xl:flex flex-row gap-x-12 items-center">
+        <ul className="hidden xl:flex flex-row gap-x-12 items-center">
           {navLink.map((nav, idx) => (
             <li
               key={idx}
-              className={`hover:text-light-ocean-blue font-semibold cursor-pointer ease-in-out duration-500 text-base  ${
+              className={`split hover:text-light-ocean-blue font-semibold cursor-pointer ease-in-out duration-500 text-base ${
                 active === nav.label ? "text-light-ocean-blue" : "text-white"
               }`}
             >
               <Link
                 to={nav.redirectLink}
                 duration={500}
-                onClick={() => setActive(nav.redirectLink)}
+                onClick={() => setActive(nav.label)}
+                className="split"
               >
                 {nav.label}
               </Link>
@@ -100,7 +138,7 @@ const Navbar = () => {
         {/* navbar mobile */}
         <div
           ref={sidebarRef}
-          className={`fixed flex flex-col  gap-y-8 py-5 px-5 top-0 left-0 h-full w-[280px] bg-primary-color glass-effect z-99 shadow-lg transform transition-transform duration-500 ease-in-out ${
+          className={`fixed flex flex-col gap-y-8 py-5 px-5 top-0 left-0 h-full w-[280px] bg-primary-color glass-effect z-99 shadow-lg transform transition-transform duration-500 ease-in-out ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -111,11 +149,13 @@ const Navbar = () => {
               className="max-w-[264px] max-h-[50px] h-full w-full object-cover"
             />
           </Link>
-          <ul className=" flex  xl:hidden flex-col gap-y-4 ">
+          <ul className="flex xl:hidden flex-col gap-y-4">
             {navLink.map((nav, idx) => (
               <li
                 key={idx}
-                className={` text-white cursor-pointer ease-in-out duration-500 text-base font-normal `}
+                className={`cursor-pointer font-semibold ease-in-out duration-500 text-base font-normal ${
+                  active === nav.label ? "text-light-ocean-blue" : "text-white"
+                }`}
               >
                 <Link
                   to={nav.redirectLink}

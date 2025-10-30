@@ -68,13 +68,17 @@ const Hero = () => {
     currentFrame >= frame.maxIndex ? frame.maxIndex - 1 : currentFrame;
 
   return (
-    <section className="hero-section h-screen w-full relative overflow-hidden bg-black">
+    <section
+      id="hero"
+      className="hero-section h-screen w-full relative overflow-hidden bg-black"
+    >
       <div className="image-gallery w-full h-full relative">
         {allImages.length > 0 && (
           <img
             src={allImages[displayFrame]}
             alt={`frame-${displayFrame}`}
             className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy" // Lazy load the image
           />
         )}
 
@@ -99,7 +103,12 @@ const Hero = () => {
           <div className="absolute bottom-0 left-0 h-auto w-full mb-8 ">
             <div className="container flex flex-row flex-wrap gap-y-2 justify-between ">
               {MinningFeatures.map((minning, idx) => {
-                return <p key={idx} className="primary-heading"> {minning} </p>;
+                return (
+                  <p key={idx} className="primary-heading">
+                    {" "}
+                    {minning}{" "}
+                  </p>
+                );
               })}
             </div>
           </div>

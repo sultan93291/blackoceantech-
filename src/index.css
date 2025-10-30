@@ -85,12 +85,12 @@
   /* colors */
   --color-primary-black: #101010;
   --color-secondary-black: #1c1c1c;
-  --color-primary-gray: rgba(255, 255, 255, 0.5);
+  --color-primary-gray: #DBDBDB;
   --color-secondary-gray: rgba(255, 255, 255, 0.1);
-  --color-secondary-white: rgba(255, 255, 255, 0.9);
+  --color-secondary-white: #DBDBDB;
   --color-off-gray: rgba(255, 255, 255, 0.75);
-  --color-secondary-off-gray: #888888;
-  --color-light-ocean-blue: #0ebdf7;
+  --color-secondary-off-gray: #DBDBDB;
+  --color-light-ocean-blue: #0EBDF7;
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
@@ -136,7 +136,7 @@ html {
   }
 
   .primary-btn {
-    @apply h-auto w-auto  py-3 xl:py-4 px-4 xl:px-6 rounded-[100px] bg-white text-sm md:text-base font-[590] text-primary-black cursor-pointer border-1 border-transparent hover:border-solid hover:border-white hover:text-white hover:bg-transparent ease-in-out duration-500;
+    @apply h-auto w-auto  py-3 xl:py-4 px-4 xl:px-6 rounded-[100px] bg-white text-sm md:text-base font-[590] text-primary-black cursor-pointer border border-transparent hover:border-solid hover:border-white hover:text-white hover:bg-transparent ease-in-out duration-700;
   }
 
   .glass-effect {
