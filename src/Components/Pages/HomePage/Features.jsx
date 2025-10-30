@@ -25,8 +25,8 @@ const featuresArr = [
 
 const Features = () => {
   return (
-    <section id="products" className="h-auto w-full pt-[150px] ">
-      <div className="container flex flex-col  gap-y-20  xl:gap-y-[150px]  items-center  ">
+    <section id="products" className="h-auto w-full pt-24 xl:pt-[150px] ">
+      <div className="container flex flex-col  gap-y-12 lg:gap-y-20  xl:gap-y-[150px]  items-center  ">
         
           {featuresArr.map((feature, idx) => {
             return (

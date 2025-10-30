@@ -16,7 +16,7 @@ const GetInTouch = () => {
           </div>
           <img
             src={logo_small}
-            className="max-w-[194px] w-full max-h-[165px] h-full object-cover"
+            className=" max-w-[120px] lg:max-w-[194px] w-full max-h-[120px] lg:max-h-[165px] h-full object-cover"
             alt="not found"
           />
         </div>

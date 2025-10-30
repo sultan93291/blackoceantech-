@@ -36,7 +36,7 @@ const WhyChooseUs = () => {
             ))}
             <img
               src={logo_small}
-              className="max-w-[194px] absolute right-1/2 bottom-0 translate-x-1/2 w-full max-h-[165px] h-full object-cover"
+              className=" absolute right-1/2 bottom-0 translate-x-1/2 max-w-[140px] lg:max-w-[194px] w-full max-h-[120px] lg:max-h-[165px] h-full object-cover"
               alt="not found"
             />
           </div>
