@@ -78,11 +78,11 @@ const Hero = () => {
           />
         )}
 
-        <div className="absolute inset-0 flex justify-center items-center w-full h-screen z-10">
-          <div className="container flex flex-row items-center w-full justify-between">
-            <div className="flex flex-col gap-y-[252px ">
-              <div className="flex flex-col gap-y-[223px] items-start">
-                <p className="text-2xl font-normal leading-[150%] text-off-gray max-w-[449px]">
+        <div className="absolute bg-black/15 inset-0 flex justify-center items-center w-full h-screen z-10">
+          <div className="container flex flex-col-reverse xl:flex-row gap-y-8 md:gap-y-10 xl:items-center w-full justify-between">
+            <div className="flex flex-col gap-y-[252px] ">
+              <div className="flex flex-col gap-y-12 md:gap-y-20 xl:gap-y-[150px] 3xl:gap-y-[223px] items-start">
+                <p className=" text-lg md:text-xl 3xl:text-2xl font-normal leading-[120%] md:leading-[150%] text-off-gray max-w-[449px]">
                   From scalable rackmount storage systems to ultra fast NVMe
                   cooling we deliver the technology that drives modern data
                   centers.
@@ -91,15 +91,15 @@ const Hero = () => {
                 <button className="primary-btn">Get a Free Consultation</button>
               </div>
             </div>
-            <h2 className="text-[56px] font-[590] text-white leading-[120%] max-w-[492px]">
+            <h2 className=" text-[30px] md:text-[36px] xl:text-[42px] 2xl:text-[48px] 3xl:text-[56px] font-[590] text-white leading-[120%] max-w-[650px]  xl:max-w-[380px] 2xl:max-w-[578px]">
               Empower Your Data Infrastructure with Enterprise Grade
               Performance.
             </h2>
           </div>
           <div className="absolute bottom-0 left-0 h-auto w-full mb-8 ">
-            <div className="container flex flex-row justify-between ">
+            <div className="container flex flex-row flex-wrap justify-between ">
               {MinningFeatures.map((minning, idx) => {
-                return <p className="primary-heading"> {minning} </p>;
+                return <p key={idx} className="primary-heading"> {minning} </p>;
               })}
             </div>
           </div>

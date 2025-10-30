@@ -89,7 +89,8 @@
   --color-secondary-gray: rgba(255, 255, 255, 0.1);
   --color-secondary-white: rgba(255, 255, 255, 0.9);
   --color-off-gray: rgba(255, 255, 255, 0.75);
-  --color-secondary-off-gray:#888888;
+  --color-secondary-off-gray: #888888;
+  --color-light-ocean-blue: #0ebdf7;
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
@@ -131,7 +132,7 @@ html {
   }
 
   .primary-heading {
-    @apply text-base font-normal text-primary-gray leading-[150%];
+    @apply text-sm md:text-base font-normal text-primary-gray leading-[150%];
   }
 
   .primary-btn {

@@ -47,7 +47,7 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="h-auto w-full py-8 fixed top-0 left-0 z-20">
+    <nav className="h-auto w-full py-4 3xl:py-8 fixed top-0 left-0 z-20">
       <div className="h-auto w-full container flex flex-row justify-between items-center">
         <img
           src={logo}
@@ -59,13 +59,12 @@ const Navbar = () => {
           {navLink.map((nav, idx) => (
             <li
               key={idx}
-              className={`hover:text-white cursor-pointer ease-in-out duration-500 text-base font-normal ${
-                active === nav.label ? "text-white" : "text-primary-gray"
+              className={`hover:text-light-ocean-blue font-semibold cursor-pointer ease-in-out duration-500 text-base  ${
+                active === nav.label ? "text-light-ocean-blue" : "text-white"
               }`}
             >
               <Link
                 to={nav.redirectLink}
-                // smooth={true}
                 duration={500}
                 onClick={() => setActive(nav.redirectLink)}
               >
@@ -78,7 +77,7 @@ const Navbar = () => {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative 2xl:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
+          className="relative xl:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
           aria-label="Toggle menu"
         >
           <span

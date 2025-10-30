@@ -21,7 +21,7 @@ const Footer = () => {
     <footer className="h-auto w-full relative ">
       <div className="container flex flex-col">
         <div className=" xl:ml-80 2xl:ml-[400px] flex flex-col gap-y-4 xl:flex-row justify-between mb-10    ">
-          <p className=" font-sf-pro text-primary-gray ">
+          <p className=" font-sf-pro text-white font-semibold ">
             All Copywrite Reserved By
           </p>
           <ul className="flex flex-row justify-between sm:justify-normal sm:gap-x-6 lg:gap-x-12 items-center ">
@@ -29,7 +29,7 @@ const Footer = () => {
               return (
                 <li
                   key={idx}
-                  className=" hover:text-white cursor-pointer ease-in-out duration-500  text-sm sm:text-base font-normal text-primary-gray"
+                  className=" hover:text-white cursor-pointer font-semibold ease-in-out duration-500  text-sm sm:text-base  text-white"
                 >
                   {" "}
                   {footer.label}{" "}

@@ -8,10 +8,7 @@ import AboutUs from "../Components/Pages/HomePage/AboutUs";
 const HomePage = () => {
   return (
     <>
-      {/*
       <Hero />
-      
-       */}
       <AboutUs />
       <Features />
       <WhyChooseUs />
