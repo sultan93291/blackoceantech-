@@ -7,11 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const [allImages, setAllImages] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
+
   const frame = {
-    currentFrame: 0,
-    maxIndex: 390,
+    maxIndex: 255, 
   };
 
+  // Preload images
   const preloadImages = () => {
     const images = [];
     for (let i = 1; i <= frame.maxIndex; i++) {
@@ -26,60 +27,68 @@ const Hero = () => {
     return images;
   };
 
-  const updateFrame = frameIndex => {
-    setCurrentFrame(Math.min(frameIndex, frame.maxIndex - 1));
-  };
-
   useEffect(() => {
     const images = preloadImages();
     setAllImages(images);
 
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: ".hero-section",
-      start: "top top",
-      end: "+=300%",
-      scrub: 1,
-      onUpdate: self => {
-        const scrollProgress = self.progress;
-        const frameIndex = Math.floor(scrollProgress * frame.maxIndex);
-        if (self.direction === -1) {
-          updateFrame(frame.maxIndex - frameIndex);
-        } else {
-          updateFrame(frameIndex);
-        }
+    // GSAP timeline with ScrollTrigger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "+=400%", // longer scroll area for smooth playback
+        scrub: 1,
+        pin: true,
+        onUpdate: self => {
+          const progress = self.progress;
+          const frameIndex = Math.round(progress * (frame.maxIndex - 1));
+
+          // Ensure index stays within range
+          setCurrentFrame(prev => {
+            if (frameIndex < 0) return 0;
+            if (frameIndex >= frame.maxIndex) return frame.maxIndex - 1;
+            return frameIndex;
+          });
+        },
       },
-      pin: true,
     });
 
-    // Cleanup ScrollTrigger when component unmounts
+    // Clean up on unmount
     return () => {
-      if (scrollTrigger) {
-        scrollTrigger.kill();
-      }
+      tl.scrollTrigger?.kill();
     };
   }, []);
 
+  // Ensure last frame stays visible if we reach end
+  const displayFrame =
+    currentFrame >= frame.maxIndex ? frame.maxIndex - 1 : currentFrame;
+
   return (
-    <section className="hero-section h-screen w-full relative overflow-hidden">
+    <section className="hero-section h-screen w-full relative overflow-hidden bg-black">
       <div className="image-gallery w-full h-full relative">
-        <img
-          src={allImages[currentFrame]}
-          alt={`frame-${currentFrame}`}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 flex justify-center items-center  w-full h-screen  z-10">
-          <div className="container flex flex-row items-center w-full justify-between ">
-            <div className="flex flex-col gap-y-[223px] items-start ">
-              <p className="text-2xl font-normal leading-[150%] text-off-gray max-w-[449px] ">
+        {allImages.length > 0 && (
+          <img
+            src={allImages[displayFrame]}
+            alt={`frame-${displayFrame}`}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
+
+        {/* Content Overlay */}
+        <div className="absolute inset-0 flex justify-center items-center w-full h-screen z-10">
+          <div className="container flex flex-row items-center w-full justify-between">
+            <div className="flex flex-col gap-y-[223px] items-start">
+              <p className="text-2xl font-normal leading-[150%] text-off-gray max-w-[449px]">
                 From scalable rackmount storage systems to ultra fast NVMe
                 cooling we deliver the technology that drives modern data
                 centers.
               </p>
+              
               <button className="primary-btn">Get a Free Consultation</button>
             </div>
-            <h2 className="text-[56px] font-[590] text-white leading-[120%] max-w-[492px] ">
-              Empower Your Data Infrastructure with Enterprise Grade Performance
-              .
+            <h2 className="text-[56px] font-[590] text-white leading-[120%] max-w-[492px]">
+              Empower Your Data Infrastructure with Enterprise Grade
+              Performance.
             </h2>
           </div>
         </div>
