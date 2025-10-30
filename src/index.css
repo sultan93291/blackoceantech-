@@ -85,12 +85,12 @@
   /* colors */
   --color-primary-black: #101010;
   --color-secondary-black: #1c1c1c;
-  --color-primary-gray: #DBDBDB;
+  --color-primary-gray: #dbdbdb;
   --color-secondary-gray: rgba(255, 255, 255, 0.1);
-  --color-secondary-white: #DBDBDB;
+  --color-secondary-white: #dbdbdb;
   --color-off-gray: rgba(255, 255, 255, 0.75);
-  --color-secondary-off-gray: #DBDBDB;
-  --color-light-ocean-blue: #0EBDF7;
+  --color-secondary-off-gray: #dbdbdb;
+  --color-light-ocean-blue: #0ebdf7;
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
@@ -126,6 +126,12 @@ html {
   margin-right: auto;
 }
 
+.glass-effect {
+  background: rgba(rgb(19, 18, 18));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 @layer {
   body {
     @apply bg-primary-black font-sf-pro;
@@ -137,11 +143,5 @@ html {
 
   .primary-btn {
     @apply h-auto w-auto  py-3 xl:py-4 px-4 xl:px-6 rounded-[100px] bg-white text-sm md:text-base font-[590] text-primary-black cursor-pointer border border-transparent hover:border-solid hover:border-white hover:text-white hover:bg-transparent ease-in-out duration-700;
-  }
-
-  .glass-effect {
-    background: rgba(rgb(19, 18, 18));
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(6px);
   }
 }
