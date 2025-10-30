@@ -13,7 +13,7 @@ const Layout = () => {
   }, []);
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Outlet />
       <Footer />
       <ScrollRestoration getKey={location => location.pathname} />

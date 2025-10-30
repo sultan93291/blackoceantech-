@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import logo from "../assets/img/logo-header.png";
 
@@ -23,16 +23,39 @@ const navLink = [
 
 const Navbar = () => {
   const [active, setActive] = useState(null);
+  const sidebarRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target) &&
+        !event.target.closest('[aria-label="Toggle menu"]')
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   return (
     <nav className="h-auto w-full py-8 fixed top-0 left-0 z-20">
-      <div className="h-auto w-full container flex flex-row justify-between">
+      <div className="h-auto w-full container flex flex-row justify-between items-center">
         <img
           src={logo}
           alt="logo"
           className="max-w-[264px] max-h-[50px] h-full w-full object-cover"
         />
-        <ul className="flex flex-row gap-x-12 items-center">
+        {/* navbar desktop */}
+        <ul className=" hidden xl:flex flex-row gap-x-12 items-center">
           {navLink.map((nav, idx) => (
             <li
               key={idx}
@@ -51,6 +74,63 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative 2xl:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-7 h-0.5 bg-white rounded-full transform transition-all duration-500 ease-in-out ${
+              isOpen ? "rotate-45 absolute" : ""
+            }`}
+          />
+          <span
+            className={`block w-7 h-0.5 bg-white rounded-full transform transition-all duration-500 ease-in-out ${
+              isOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-7 h-0.5 bg-white rounded-full transform transition-all duration-500 ease-in-out ${
+              isOpen ? "-rotate-45 absolute" : ""
+            }`}
+          />
+        </button>
+
+        {/* navbar mobile */}
+        <div
+          ref={sidebarRef}
+          className={`fixed flex flex-col  gap-y-8 py-5 px-5 top-0 left-0 h-full w-[280px] bg-primary-color glass-effect z-99 shadow-lg transform transition-transform duration-500 ease-in-out ${
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <Link to="/" className="cursor-pointer">
+            <img
+              src={logo}
+              alt="logo"
+              className="max-w-[264px] max-h-[50px] h-full w-full object-cover"
+            />
+          </Link>
+          <ul className=" flex  xl:hidden flex-col gap-y-4 ">
+            {navLink.map((nav, idx) => (
+              <li
+                key={idx}
+                className={`hover:text-white cursor-pointer ease-in-out duration-500 text-base font-normal ${
+                  active === nav.label ? "text-white" : "text-primary-gray"
+                }`}
+              >
+                <Link
+                  to={nav.redirectLink}
+                  duration={500}
+                  onClick={() => setActive(nav.redirectLink)}
+                >
+                  {nav.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -29,7 +29,7 @@ const Footer = () => {
               return (
                 <li
                   key={idx}
-                  className=" hover:text-white cursor-pointer ease-in-out duration-500  text-sm xs:text-base font-normal text-primary-gray"
+                  className=" hover:text-white cursor-pointer ease-in-out duration-500  text-sm sm:text-base font-normal text-primary-gray"
                 >
                   {" "}
                   {footer.label}{" "}
