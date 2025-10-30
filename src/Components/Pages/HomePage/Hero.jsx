@@ -78,7 +78,7 @@ const Hero = () => {
           />
         )}
 
-        <div className="absolute bg-black/15 inset-0 flex justify-center items-center w-full h-screen z-10">
+        <div className="absolute bg-black/25 inset-0 flex justify-center items-center w-full h-screen z-10">
           <div className="container flex flex-col-reverse xl:flex-row gap-y-8 md:gap-y-10 xl:items-center w-full justify-between">
             <div className="flex flex-col gap-y-[252px] ">
               <div className="flex flex-col gap-y-12 md:gap-y-20 xl:gap-y-[150px] 3xl:gap-y-[223px] items-start">
@@ -97,7 +97,7 @@ const Hero = () => {
             </h2>
           </div>
           <div className="absolute bottom-0 left-0 h-auto w-full mb-8 ">
-            <div className="container flex flex-row flex-wrap justify-between ">
+            <div className="container flex flex-row flex-wrap gap-y-2 justify-between ">
               {MinningFeatures.map((minning, idx) => {
                 return <p key={idx} className="primary-heading"> {minning} </p>;
               })}

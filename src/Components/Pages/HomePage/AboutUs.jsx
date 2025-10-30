@@ -2,7 +2,7 @@ import logo_light from "../../../assets/img/logo-white.png";
 
 const AboutUs = () => {
   return (
-    <section id="about-us" className=" h-auto w-full pt-[150px] ">
+    <section id="about-us" className=" h-auto w-full pt-28 xl:pt-[200px]  ">
       <div className="container flex flex-col-reverse 2xl:flex-col gap-y-4 lg:gap-y-[72px] items-start ">
         <p className=" text-xl 2xl:text-2xl font-[510] leading-[150%] text-secondary-white max-w-[685px] ">
           Empowering businesses with reliable, high-performance storage and
