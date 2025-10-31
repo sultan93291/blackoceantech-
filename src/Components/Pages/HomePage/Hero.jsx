@@ -15,7 +15,7 @@ const Hero = () => {
   const [images, setImages] = useState([]);
   const frame = { maxIndex: 255 };
 
-  // Preload all frames
+ 
   useEffect(() => {
     const imgs = [];
     for (let i = 1; i <= frame.maxIndex; i++) {
@@ -32,7 +32,7 @@ const Hero = () => {
     setImages(imgs);
   }, []);
 
-  // Draw current frame
+
   const drawFrame = index => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -44,7 +44,7 @@ const Hero = () => {
 
     context.clearRect(0, 0, width, height);
 
-    // Maintain aspect ratio
+  
     const scale = Math.max(width / img.width, height / img.height);
     const x = width / 2 - (img.width / 2) * scale;
     const y = height / 2 - (img.height / 2) * scale;
@@ -81,7 +81,6 @@ const Hero = () => {
       id="hero"
       className="hero-section h-screen w-full relative overflow-hidden bg-black"
     >
-      {/* Canvas replaces <img> */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
@@ -89,7 +88,7 @@ const Hero = () => {
         height={1080}
       />
 
-      <div className="absolute bg-black/25 inset-0 flex justify-center items-center w-full h-screen z-10">
+      <div className="absolute bg-black/20 inset-0 flex justify-center items-center w-full h-screen z-10">
         <div className="container flex flex-col-reverse xl:flex-row gap-y-8 md:gap-y-10 xl:items-center w-full justify-between">
           <div className="flex flex-col gap-y-[252px] ">
             <div className="flex flex-col gap-y-12 md:gap-y-20 xl:gap-y-[150px] 3xl:gap-y-[223px] items-start">
