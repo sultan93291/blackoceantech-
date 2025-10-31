@@ -65,7 +65,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="h-auto w-full py-4 3xl:py-8    bg-black/20   fixed top-0 left-0 z-50">
+    <nav className="h-auto w-full py-4 3xl:py-8   bg-black/50   fixed top-0 left-0 z-50">
       <div className="h-auto w-full container  flex flex-row justify-between items-center">
         <img
           src={logo}
@@ -119,7 +119,7 @@ const Navbar = () => {
         {/* navbar mobile */}
         <div
           ref={sidebarRef}
-          className={`fixed bg-side_nav z-99 backdrop-blur-md flex flex-col glass-effect  gap-y-8 py-5 px-5 top-0 left-0 h-full w-[280px] bg-primary-color   shadow-lg transform transition-transform duration-500 ease-in-out ${
+          className={`fixed flex flex-col bg-side_nav backdrop-blur-md    gap-y-8 py-5 px-5 top-0 left-0 h-full w-[280px] bg-primary-color   shadow-lg transform transition-transform duration-500 ease-in-out ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
@@ -134,7 +134,7 @@ const Navbar = () => {
             {navLink.map((nav, idx) => (
               <li
                 key={idx}
-                className={`  cursor-pointer font-semibold ease-in-out duration-500 text-base font-normal ${
+                className={`  cursor-pointer font-semibold ease-in-out duration-500 text-base  ${
                   active === nav.label ? "text-light-ocean-blue" : "text-white"
                 } `}
               >

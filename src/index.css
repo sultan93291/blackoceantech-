@@ -91,7 +91,7 @@
   --color-off-gray: rgba(255, 255, 255, 0.75);
   --color-secondary-off-gray: #dbdbdb;
   --color-light-ocean-blue: #0ebdf7;
-  --color-side_nav:rgba(19, 18, 18, 0.7);
+  --color-side_nav:rgba(19, 18, 18, 0.5);
 
   /* shadows */
   --shadow-primary: 0 4px 25px -4px rgba(0, 0, 0, 0.1);
