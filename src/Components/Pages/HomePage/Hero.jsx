@@ -15,7 +15,6 @@ const Hero = () => {
   const [images, setImages] = useState([]);
   const frame = { maxIndex: 255 };
 
-  // Preload frames
   useEffect(() => {
     const imgs = [];
     for (let i = 1; i <= frame.maxIndex; i++) {
@@ -32,14 +31,12 @@ const Hero = () => {
     setImages(imgs);
   }, []);
 
-  // Draw a single frame
   const drawFrame = index => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
     if (!images[index]) return;
 
-    // Match canvas resolution to screen size
     const { clientWidth, clientHeight } = canvas;
     canvas.width = clientWidth;
     canvas.height = clientHeight;
@@ -56,7 +53,6 @@ const Hero = () => {
     context.drawImage(img, x, y, img.width * scale, img.height * scale);
   };
 
-  // Scroll animation setup
   useEffect(() => {
     if (!images.length) return;
 
@@ -86,14 +82,12 @@ const Hero = () => {
       id="hero"
       className="hero-section h-screen w-full relative overflow-hidden bg-black"
     >
-      {/* Canvas Animation */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ aspectRatio: "16/9", objectFit: "cover" }}
+        style={{ aspectRatio: "16/9", objectFit: "contain" }}
       />
 
-      {/* Overlay Content */}
       <div className="absolute bg-black/20 inset-0 flex justify-center items-center w-full h-screen z-10">
         <div className="container flex flex-col-reverse xl:flex-row gap-y-8 md:gap-y-10 xl:items-center w-full justify-between">
           <div className="flex flex-col gap-y-[252px]">
@@ -113,7 +107,6 @@ const Hero = () => {
           </h2>
         </div>
 
-        {/* Bottom Features */}
         <div className="absolute bottom-0 left-0 h-auto w-full mb-8">
           <div className="container flex flex-row flex-wrap gap-y-2 justify-between">
             {MinningFeatures.map((minning, idx) => (

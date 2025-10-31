@@ -20,7 +20,7 @@ const GetInTouch = () => {
             alt="not found"
           />
         </div>
-        <h2 className=" text-[52px] xl:text-[100px] 2xl:text-[136px] font-[590] leading-[120%] text-white ">
+        <h2 className=" text-[42px] xl:text-[100px] 2xl:text-[136px] font-[590] leading-[120%] text-white ">
           Get in Touch
         </h2>
       </div>
