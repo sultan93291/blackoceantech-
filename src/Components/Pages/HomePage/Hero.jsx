@@ -13,7 +13,7 @@ const MinningFeatures = [
 const Hero = () => {
   const canvasRef = useRef(null);
   const [images, setImages] = useState([]);
-  const frame = { maxIndex: 255 };
+  const frame = { maxIndex: 319 };
 
   useEffect(() => {
     const imgs = [];
@@ -21,7 +21,7 @@ const Hero = () => {
       const path = new URL(
         `../../../assets/img/frames/frame_${i
           .toString()
-          .padStart(4, "0")}.jpeg`,
+          .padStart(4, "0")}.png`,
         import.meta.url
       ).href;
       const img = new Image();
